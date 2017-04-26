@@ -8,10 +8,10 @@ var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
 var watson = require('watson-developer-cloud');
 
 var conversation = watson.conversation({
-  username: '5043ed03-83d8-4e15-883f-c24ad92d1254',
-  password: 'KMdzXlqvxLXu',
+  username: 'e4550c76-2732-4319-99a3-a5ba24353928',
+  password: 'LePjWTbZIsCx',
   version: 'v1',
-  version_date: '2017-04-24'
+  version_date: '2017-04-14'
 });
 
 
@@ -21,7 +21,7 @@ var response;
 router.get('/firstcall', function(req, res, next) {
 	
   					conversation.message({
-  					workspace_id: '1e018105-1f52-4539-acbe-ac166b80631a',
+  					workspace_id: 'f9fa4f80-fef3-49eb-b5cb-ca1b40d77e52',
   				 	input: {'text': " " },
   						
 						},  function(err, response) {
