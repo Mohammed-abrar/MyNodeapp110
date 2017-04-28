@@ -1,6 +1,6 @@
 var express = require('express');
 var fs = require('file-system');
-var db = require('mongodb');
+var db = require('mongodb').MongoClient ;
 var monkvar = require('monk');
 var router = express.Router();
 
