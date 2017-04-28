@@ -4,7 +4,7 @@ var MongoClient = require('mongodb').MongoClient;
 var monk = require('monk');
 var router = express.Router();
 
-var uri = "mongodb://akshay.gn@tcs.com:Ak$h@y94@mycluster-shard-00-00-rplbd.mongodb.net:27017,mycluster-shard-00-01-rplbd.mongodb.net:27017,mycluster-shard-00-02-rplbd.mongodb.net:27017/MyDatabase?ssl=true&replicaSet=MyCluster-shard-0&authSource=admin" ;
+var uri = "mongodb://akshaykumargowdar:mTMRFjtc9KYfZA4b@mycluster-shard-00-00-rplbd.mongodb.net:27017,mycluster-shard-00-01-rplbd.mongodb.net:27017,mycluster-shard-00-02-rplbd.mongodb.net:27017/MyDatabase?ssl=true&replicaSet=MyCluster-shard-0&authSource=admin" ;
 
 
 var TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
