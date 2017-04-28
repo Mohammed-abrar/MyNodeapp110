@@ -7,7 +7,6 @@ var router = express.Router();
 var uri = mongodb://akshaykumargowdar:Ak$h@y94@mycluster-shard-00-00-rplbd.mongodb.net:27017,mycluster-shard-00-01-rplbd.mongodb.net:27017,mycluster-shard-00-02-rplbd.mongodb.net:27017/MyDatabase?ssl=true&replicaSet=MyCluster-shard-0&authSource=admin ;
 MongoClient.connect(uri, function(err, db) {
   console.log("DB connected");
-  db.close();
 });
 
 var TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
