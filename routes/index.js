@@ -1,14 +1,11 @@
 var express = require('express');
 var fs = require('file-system');
-var MongoClient = require('mongodb').MongoClient ;
-var monkvar = require('monk');
+var mongodb = require('mongodb');
+var monk = require('monk');
 var router = express.Router();
 
 var uri = "mongodb://akshaykumargowdar:Ak$h@y94@mycluster-shard-00-00-rplbd.mongodb.net:27017,mycluster-shard-00-01-rplbd.mongodb.net:27017,mycluster-shard-00-02-rplbd.mongodb.net:27017/MyDatabase?ssl=true&replicaSet=MyCluster-shard-0&authSource=admin" ;
-MongoClient.connect(uri, function(err, db) {
-  console.log("DB connected");
-});
-
+var db = monk(uri);
 var TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
 var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
 
@@ -116,6 +113,23 @@ router.get('/speechtotext', function(req, res, next) {
 });
 
 
+router.get('/storedata', function(req, res, next) {
+ db.collection('MyCollection').insert ({
+	product : "phone",
+	brand   : "iphone",
+        model   : "7s",
+	color	: "gold",
+	memory	: "16gb",
+	price	: 45000
+
+}).then(function(response){
+ 	res.send(response);
+ });
+router.get('/getdata', function(req, res, next) {
+ db.collection('MyCollection').find().then(function(response){
+ 	res.send(response);
+ 	});
+ });
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
