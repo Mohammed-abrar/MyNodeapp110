@@ -1,7 +1,7 @@
 var express = require('express');
 var fs = require('file-system');
-//var mongodb = require('mongodb');
-//var monk = require('monk');
+var mongodb = require('mongodb');
+var monk = require('monk');
 var router = express.Router();
 
 //var uri = "mongodb://akshaykumargowdar:Ak$h@y94@mycluster-shard-00-00-rplbd.mongodb.net:27017,mycluster-shard-00-01-rplbd.mongodb.net:27017,mycluster-shard-00-02-rplbd.mongodb.net:27017/MyDatabase?ssl=true&replicaSet=MyCluster-shard-0&authSource=admin" ;
