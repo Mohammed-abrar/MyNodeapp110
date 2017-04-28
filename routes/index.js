@@ -1,13 +1,13 @@
 var express = require('express');
 var fs = require('file-system');
-var MongoClient = require('mongodb').MongoClient ;
+var MongoClient = require('mongodb') ;
 var monkvar = require('monk');
 var router = express.Router();
-
+/*
 var uri = "mongodb://akshaykumargowdar:Ak$h@y94@mycluster-shard-00-00-rplbd.mongodb.net:27017,mycluster-shard-00-01-rplbd.mongodb.net:27017,mycluster-shard-00-02-rplbd.mongodb.net:27017/MyDatabase?ssl=true&replicaSet=MyCluster-shard-0&authSource=admin" ;
 MongoClient.connect(uri, function(err, db) {
   console.log("DB connected");
-});
+});*/
 
 var TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
 var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
