@@ -1,11 +1,11 @@
 var express = require('express');
 var fs = require('file-system');
-var mongodb = require('mongodb');
-var monk = require('monk');
+//var mongodb = require('mongodb');
+//var monk = require('monk');
 var router = express.Router();
 
-var uri = "mongodb://akshaykumargowdar:Ak$h@y94@mycluster-shard-00-00-rplbd.mongodb.net:27017,mycluster-shard-00-01-rplbd.mongodb.net:27017,mycluster-shard-00-02-rplbd.mongodb.net:27017/MyDatabase?ssl=true&replicaSet=MyCluster-shard-0&authSource=admin" ;
-var db = monk(uri);
+//var uri = "mongodb://akshaykumargowdar:Ak$h@y94@mycluster-shard-00-00-rplbd.mongodb.net:27017,mycluster-shard-00-01-rplbd.mongodb.net:27017,mycluster-shard-00-02-rplbd.mongodb.net:27017/MyDatabase?ssl=true&replicaSet=MyCluster-shard-0&authSource=admin" ;
+//var db = monk(uri);
 var TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
 var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
 
@@ -112,7 +112,7 @@ router.get('/speechtotext', function(req, res, next) {
 	
 });
 
-
+/*
 router.get('/storedata', function(req, res, next) {
  db.collection('MyCollection').insert ({
 	product : "phone",
@@ -132,6 +132,7 @@ router.get('/getdata', function(req, res, next) {
  	res.send(response);
  	});
  });
+*/
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
