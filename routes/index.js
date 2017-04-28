@@ -44,7 +44,7 @@ router.get('/firstcall', function(req, res, next) {
 
 
 router.post('/consecutivecalls', function(req, res) {
-	
+					console.log(req.body.context);
   					conversation.message({
   					workspace_id: 'f9fa4f80-fef3-49eb-b5cb-ca1b40d77e52',
   				 	input: {'text': req.body.question },
