@@ -116,7 +116,7 @@ router.get('/speechtotext', function(req, res, next) {
 
 router.get('/storedata', function(req, res, next) {
 MongoClient.connect(uri, function(err, db) {
-	db.collection('MyCollection').insert ({
+	db.collection('MyCollection').insert({
 	product : "phone",
 	brand   : "iphone",
         model   : "7s",
