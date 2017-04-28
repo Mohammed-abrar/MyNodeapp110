@@ -125,6 +125,8 @@ router.get('/storedata', function(req, res, next) {
 }).then(function(response){
  	res.send(response);
  });
+});
+
 router.get('/getdata', function(req, res, next) {
  db.collection('MyCollection').find().then(function(response){
  	res.send(response);
