@@ -49,7 +49,7 @@ router.post('/consecutivecalls', function(req, res) {
   					conversation.message({
   					workspace_id: 'f9fa4f80-fef3-49eb-b5cb-ca1b40d77e52',
   				 	input: {'text': req.body.question },
-  						context: req.body.context
+  						context: context
 						},  function(err, response) {
   										if (err)
     										console.log('error:', err);
