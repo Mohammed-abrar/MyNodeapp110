@@ -1,6 +1,9 @@
 var express = require('express');
 var fs = require('file-system');
+var db = require('mongodb');
+var monkvar = require('monk');
 var router = express.Router();
+
 
 var TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
 var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
