@@ -1,10 +1,10 @@
 var express = require('express');
 var fs = require('file-system');
-var mongodb = require('mongodb');
+var mongodb = require('mongodb').MongoClient;
 var monk = require('monk');
 var router = express.Router();
 
-var uri = "mongodb://akshay.gn@tcs.com:Ak$h@y94@mycluster-shard-00-00-rplbd.mongodb.net:27017,mycluster-shard-00-01-rplbd.mongodb.net:27017,mycluster-shard-00-02-rplbd.mongodb.net:27017/MyDatabase?ssl=true&replicaSet=MyCluster-shard-0&authSource=admin" ;
+//var uri = "mongodb://akshay.gn@tcs.com:Ak$h@y94@mycluster-shard-00-00-rplbd.mongodb.net:27017,mycluster-shard-00-01-rplbd.mongodb.net:27017,mycluster-shard-00-02-rplbd.mongodb.net:27017/MyDatabase?ssl=true&replicaSet=MyCluster-shard-0&authSource=admin" ;
 //var db = monk(uri);
 var TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
 var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
