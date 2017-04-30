@@ -1,11 +1,11 @@
 var express = require('express');
 var fs = require('file-system');
-var MongoClient = require('mongodb').MongoClient;
+var mongodb = require('mongodb');
 var monk = require('monk');
 var router = express.Router();
 
 var uri = "mongodb://akshaykumargowdar:mTMRFjtc9KYfZA4b@mycluster-shard-00-00-rplbd.mongodb.net:27017,mycluster-shard-00-01-rplbd.mongodb.net:27017,mycluster-shard-00-02-rplbd.mongodb.net:27017/MyDatabase?ssl=true&replicaSet=MyCluster-shard-0&authSource=admin" ;
-
+var db = monk(uri);
 
 var TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
 var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
@@ -115,7 +115,6 @@ router.get('/speechtotext', function(req, res, next) {
 
 
 router.get('/storedata', function(req, res, next) {
-MongoClient.connect(uri, function(err, db) {
 	db.collection('MyCollection').insert({
 	product : "phone",
 	brand   : "iphone",
@@ -127,19 +126,15 @@ MongoClient.connect(uri, function(err, db) {
 }).then(function(response){
  	res.send(response);
  });
-	db.close();
-});
 });
 
 
 router.get('/getdata', function(req, res, next) {
-	MongoClient.connect(uri, function(err, db) {
- 	db.collection('MyCollection').find().then(function(response){
+	db.collection('MyCollection').find().then(function(response){
  	res.send(response);
  	});
-db.close();
 });
- });
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
