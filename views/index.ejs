@@ -80,7 +80,7 @@ if (navigator.getUserMedia) {
   var onSuccess = function(stream) {
     var mediaRecorder = new MediaRecorder(stream);
 
-    visualize(stream);
+    
 
     record.onclick = function() {
       mediaRecorder.start();
