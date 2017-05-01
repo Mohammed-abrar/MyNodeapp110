@@ -107,6 +107,7 @@ if (navigator.getUserMedia) {
     mediaRecorder.onstop = function(e) {
       console.log("data available after MediaRecorder.stop() called.");
       var blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
+      console.log(chunks);
       chunks = [];
       var audioURL = window.URL.createObjectURL(blob);
       
