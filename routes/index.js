@@ -8,7 +8,7 @@ var monk = require('monk');
 var db = monk('mongodb://mohammed_abrar95:BPEJTwZgEYgKwixL@myapplicationdatabase-shard-00-00-gmb8r.mongodb.net:27017,myapplicationdatabase-shard-00-01-gmb8r.mongodb.net:27017,myapplicationdatabase-shard-00-02-gmb8r.mongodb.net:27017/MyDatabase?ssl=true&replicaSet=MyApplicationDatabase-shard-0&authSource=admin');
 //var db = monk('localhost:27017/MyApplicationDatabase');
 
-router.get('getmydata',function(req,rses){
+router.get('/getmydata',function(req,rses){
 	db.collection('users').find().then(function(response){
 	console.log(response);
 		res.send(response);
