@@ -11,6 +11,7 @@ var db = monk('mongodb://mohammed_abrar95:BPEJTwZgEYgKwixL@myapplicationdatabase
 router.get('getmydata',function(req,rses){
 	db.collection('users').find().then(function(response){
 	console.log(response);
+		res.send(response);
 });
 
 });
