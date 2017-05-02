@@ -127,20 +127,8 @@ router.get('/speechtotext', function(req, res, next) {
 
 router.get('/storedata', function(req, res, next) {
 	
-	db.collection('MyCollection').insert({
-		  
-product : "phone",
-
-brand   : "iphone",
-model   : "7s",
-
-color   : "golden",
-
-memory  : "32gb",
-	
-price   :  50000
-		
-}).then(function(response) {
+	db.collection('MyCollection').insert({ product : "phone", brand   : "iphone", model   : "7s", color   : "golden", memory  : "32gb",-price   :  50000
+		}).then(function(response) {
 			res.send(response);
 			});
 	
