@@ -5,12 +5,9 @@ var fs = require('file-system');
 var router = express.Router();
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('mongodb://mohammed_abrar95:BPEJTwZgEYgKwixL@myapplicationdatabase-shard-00-00-gmb8r.mongodb.net:27017,myapplicationdatabase-shard-00-01-gmb8r.mongodb.net:27017,myapplicationdatabase-shard-00-02-gmb8r.mongodb.net:27017/MyDatabase?ssl=true&replicaSet=MyApplicationDatabase-shard-0&authSource=admin');
+var db = monk('mongodb://akshaykumargowdar:h4SY8SfdQFcd11VL@mycluster-shard-00-00-rplbd.mongodb.net:27017,mycluster-shard-00-01-rplbd.mongodb.net:27017,mycluster-shard-00-02-rplbd.mongodb.net:27017/mydb?ssl=true&replicaSet=MyCluster-shard-0&authSource=admin');
 //var db = monk('localhost:27017/MyApplicationDatabase');
 
-db.collection('users').find().then(function(response){
-console.log(response);
-});
 
 var TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
 var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
@@ -118,40 +115,29 @@ router.get('/speechtotext', function(req, res, next) {
 	
 });
 
-/*
-router.get('/storedata', function(req, res, next) {
-	cloudant.db.create('mydb', function() {
-		var mydb = cloudant.db.use('mydb');
-		mydb.insert(
-			{
-				product : "phone",
-				brand   : "iphone",
-        			model   : "7s",
-				color	: "gold",
-				memory	: "16gb",
-				price	: 45000
-			}, 'phone', function(err, body, header) {
-     								 if (err) {
-      								  return console.log('[mydb.insert] ', err.message);
-    								  }
 
-      								console.log('You have inserted data.');
-			                                        console.log(body);
-			    	     });
-		);
-	}).then(function(response){
- 	res.send(response);
- });
+router.get('/storedata', function(req, res, next) {
+	db.collection('MyCollection').insert(
+		{
+		  product : "phone",
+		  brand   : "iphone",
+	          model   : "7s",
+		  color   : "golden",
+                  memory  : "16gb",
+		  price   :  50000
+		}).then(function(response) {
+			res.send(response);
+			});
+	
 });
 
 
 router.get('/getdata', function(req, res, next) {
-	var db = cloudant.db.use('myDB');
 	db.collection('MyCollection').find().then(function(response){
  	res.send(response);
  	});
 });
-*/
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
