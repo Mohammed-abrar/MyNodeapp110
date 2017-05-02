@@ -17,7 +17,7 @@
 	    "serve-favicon": "~2.4.2",
 	     "mongodb" : "~2.2.24",
 	    "monk" : "~4.0.0",
-	    "cloudant" : "~1.5"
+	    "cloudant" : "~2.0.0"
                        },
 	"repository": {},
 	"engines": {
