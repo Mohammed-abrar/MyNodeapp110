@@ -4,9 +4,7 @@ var Cloudant = require('cloudant');
 var cloudant = Cloudant({
   "username": "95aa768a-4661-4cfa-bf90-6eab77f14154-bluemix",
   "password": "aef7be9fff4c0fc5cde478ed173cd0fc008d6b015f70e0b1e3364fd3acc9ab51",
-  "host": "95aa768a-4661-4cfa-bf90-6eab77f14154-bluemix.cloudant.com",
-  "port": 443,
-  "url": "https://95aa768a-4661-4cfa-bf90-6eab77f14154-bluemix:aef7be9fff4c0fc5cde478ed173cd0fc008d6b015f70e0b1e3364fd3acc9ab51@95aa768a-4661-4cfa-bf90-6eab77f14154-bluemix.cloudant.com"
+  
 });
 
 
