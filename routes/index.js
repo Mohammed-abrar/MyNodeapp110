@@ -1,11 +1,17 @@
 var express = require('express');
 var fs = require('file-system');
-var mongodb = require('mongodb');
-var monk = require('monk');
+var cloudant = require('cloudant')({
+  "username": "95aa768a-4661-4cfa-bf90-6eab77f14154-bluemix",
+  "password": "aef7be9fff4c0fc5cde478ed173cd0fc008d6b015f70e0b1e3364fd3acc9ab51",
+  "host": "95aa768a-4661-4cfa-bf90-6eab77f14154-bluemix.cloudant.com",
+  "port": 443,
+  "url": "https://95aa768a-4661-4cfa-bf90-6eab77f14154-bluemix:aef7be9fff4c0fc5cde478ed173cd0fc008d6b015f70e0b1e3364fd3acc9ab51@95aa768a-4661-4cfa-bf90-6eab77f14154-bluemix.cloudant.com"
+});
+
+
 var router = express.Router();
 
-var uri = "mongodb://akshaykumargowdar:mTMRFjtc9KYfZA4b@mycluster-shard-00-00-rplbd.mongodb.net:27017,mycluster-shard-00-01-rplbd.mongodb.net:27017,mycluster-shard-00-02-rplbd.mongodb.net:27017/MyDatabase?ssl=true&replicaSet=MyCluster-shard-0&authSource=admin" ;
-var db = monk(uri);
+
 
 var TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
 var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
@@ -114,7 +120,7 @@ router.get('/speechtotext', function(req, res, next) {
 });
 
 
-router.get('/storedata', function(req, res, next) {
+/*router.get('/storedata', function(req, res, next) {
 	db.collection('MyCollection').insert({
 	product : "phone",
 	brand   : "iphone",
@@ -134,7 +140,7 @@ router.get('/getdata', function(req, res, next) {
  	res.send(response);
  	});
 });
-
+*/
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
