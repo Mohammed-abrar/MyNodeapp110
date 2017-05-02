@@ -120,7 +120,8 @@ router.get('/speechtotext', function(req, res, next) {
 });
 
 
-/*router.get('/storedata', function(req, res, next) {
+router.get('/storedata', function(req, res, next) {
+	var db = cloudant.db.use('myDB');
 	db.collection('MyCollection').insert({
 	product : "phone",
 	brand   : "iphone",
@@ -136,11 +137,12 @@ router.get('/speechtotext', function(req, res, next) {
 
 
 router.get('/getdata', function(req, res, next) {
+	var db = cloudant.db.use('myDB');
 	db.collection('MyCollection').find().then(function(response){
  	res.send(response);
  	});
 });
-*/
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
