@@ -8,6 +8,8 @@ var monk = require('monk');
 var db = monk('mongodb://akshaykumargowdar:h4SY8SfdQFcd11VL@mycluster-shard-00-00-rplbd.mongodb.net:27017,mycluster-shard-00-01-rplbd.mongodb.net:27017,mycluster-shard-00-02-rplbd.mongodb.net:27017/mydb?ssl=true&replicaSet=MyCluster-shard-0&authSource=admin');
 //var db = monk('localhost:27017/MyApplicationDatabase');
 
+db.createCollection("MyCollection", { capped : true, size : 5242880, max : 5000 } );
+
 
 var TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
 var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
