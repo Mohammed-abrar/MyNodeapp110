@@ -15,8 +15,8 @@ var db = monk('mongodb://akshaykumargowdar:h7GKkbvWVPZ2vwr9@myapplication-shard-
 //db.collection('mycollection').insert({"username" : "abrar" });
 
 //db.collection('mycollection').find().then(function(response){
-	console.log(response);
-});
+//	console.log(response);
+//});
 
 var TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
 var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
