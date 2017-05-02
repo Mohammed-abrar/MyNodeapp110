@@ -5,11 +5,18 @@ var fs = require('file-system');
 var router = express.Router();
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('mongodb://akshaykumargowdar:h4SY8SfdQFcd11VL@mycluster-shard-00-00-rplbd.mongodb.net:27017,mycluster-shard-00-01-rplbd.mongodb.net:27017,mycluster-shard-00-02-rplbd.mongodb.net:27017/MyCluster?ssl=true&replicaSet=MyCluster-shard-0&authSource=admin');
+
+var db = monk('mongodb://akshaykumargowdar:h4SY8SfdQFcd11VL@mycluster-shard-00-00-rplbd.mongodb.net:27017,mycluster-shard-00-01-rplbd.mongodb.net:27017,mycluster-shard-00-02-rplbd.mongodb.net:27017/MyDataBase?ssl=true&replicaSet=MyCluster-shard-0&authSource=admin');
 //var db = monk('localhost:27017/MyApplicationDatabase');
 
 //db.createCollection("MyCollection", { capped : true, size : 5242880, max : 5000 } )
 
+
+db.collection('mycollection').insert({"username" : "abrar" });
+
+db.collection('mycollection').find().then(function(response){
+	console.log(response);
+});
 
 var TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
 var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
