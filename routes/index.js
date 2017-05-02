@@ -117,7 +117,7 @@ router.get('/speechtotext', function(req, res, next) {
 	
 });
 
-
+/*
 router.get('/storedata', function(req, res, next) {
 	cloudant.db.create('mydb', function() {
 		var mydb = cloudant.db.use('mydb');
@@ -150,7 +150,7 @@ router.get('/getdata', function(req, res, next) {
  	res.send(response);
  	});
 });
-
+*/
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
