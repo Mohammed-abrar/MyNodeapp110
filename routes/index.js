@@ -126,7 +126,7 @@ router.get('/speechtotext', function(req, res, next) {
 
 
 router.get('/storedata', function(req, res, next) {
-	var abc = {
+	var abc = JSON.parse({
 
 {
 		  
@@ -159,7 +159,7 @@ price   :  50000
 		
 }
 
-}
+})
 	db.collection('MyCollection').insert(abc
 		).then(function(response) {
 			res.send(response);
