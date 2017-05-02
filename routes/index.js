@@ -121,16 +121,26 @@ router.get('/speechtotext', function(req, res, next) {
 
 
 router.get('/storedata', function(req, res, next) {
-	var db = cloudant.db.use('myDB');
-	db.collection('MyCollection').insert({
-	product : "phone",
-	brand   : "iphone",
-        model   : "7s",
-	color	: "gold",
-	memory	: "16gb",
-	price	: 45000
+	cloudant.db.create('mydb', function() {
+		var mydb = cloudant.db.use('mydb');
+		mydb.insert(
+			{
+				product : "phone",
+				brand   : "iphone",
+        			model   : "7s",
+				color	: "gold",
+				memory	: "16gb",
+				price	: 45000
+			}, 'phone', function(err, body, header) {
+     								 if (err) {
+      								  return console.log('[mydb.insert] ', err.message);
+    								  }
 
-}).then(function(response){
+      								console.log('You have inserted data.');
+			                                        console.log(body);
+			    	     });
+		);
+	}).then(function(response){
  	res.send(response);
  });
 });
