@@ -2,14 +2,37 @@ var express = require('express');
 var fs = require('file-system');
 var MongoClient = require('mongodb').MongoClient;
 
-var uri = "mongodb://akshaykumargowdar:S8SjtufykPNWYYpO@mycluster-shard-00-00-rplbd.mongodb.net:27017,mycluster-shard-00-01-rplbd.mongodb.net:27017,mycluster-shard-00-02-rplbd.mongodb.net:27017/myDatabase?ssl=true&replicaSet=MyCluster-shard-0&authSource=admin";
-MongoClient.connect(uri, function(err, db) {
-  db.close();
-});
+var Cloudant = require('cloudant')
+var cloudant = Cloudant("https://95aa768a-4661-4cfa-bf90-6eab77f14154-bluemix:aef7be9fff4c0fc5cde478ed173cd0fc008d6b015f70e0b1e3364fd3acc9ab51@95aa768a-4661-4cfa-bf90-6eab77f14154-bluemix.cloudant.com");
 
 var router = express.Router();
 
-
+var db = cloudant.db.use("mydb");
+var book_indexer = function(doc) {
+  if (doc.author && doc.title) {
+    // This looks like a book. 
+    index('title', doc.title);
+    index('author', doc.author);
+  }
+}
+ 
+var ddoc = {
+  _id: '_design/library',
+  indexes: {
+    books: {
+      analyzer: {name: 'standard'},
+      index   : book_indexer
+    }
+  }
+};
+ 
+db.insert(ddoc, function (er, result) {
+  if (er) {
+    throw er;
+  }
+ 
+  console.log('Created design document with books index');
+});
 
 var TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
 var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
