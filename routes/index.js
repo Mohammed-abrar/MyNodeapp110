@@ -12,11 +12,11 @@ var db = monk('mongodb://akshaykumargowdar:h7GKkbvWVPZ2vwr9@myapplication-shard-
 //db.createCollection("MyCollection", { capped : true, size : 5242880, max : 5000 } )
 
 
-db.collection('mycollection').insert({"username" : "abrar" });
+//db.collection('mycollection').insert({"username" : "abrar" });
 
-db.collection('mycollection').find().then(function(response){
-	console.log(response);
-});
+//db.collection('mycollection').find().then(function(response){
+//	console.log(response);
+//});
 
 var TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
 var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
@@ -125,9 +125,14 @@ router.get('/speechtotext', function(req, res, next) {
 });
 
 
-/*router.get('/storedata', function(req, res, next) {
+router.get('/storedata', function(req, res, next) {
 	
-	db.collection('MyCollection').insert({ product : "phone", brand   : "iphone", model   : "7s", color   : "golden", memory  : "32gb",-price   :  50000
+	db.collection('MyCollection').insert({ product : "phone", 
+					      brand   : "iphone", 
+					      model   : "7s", 
+					      color   : "golden", 
+					      memory  : "32gb",
+					      price   :  50000
 		}).then(function(response) {
 			res.send(response);
 			});
@@ -140,7 +145,7 @@ router.get('/getdata', function(req, res, next) {
  	res.send(response);
  	});
 });
-*/
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
