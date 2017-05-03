@@ -18,7 +18,7 @@ var db = monk('mongodb://akshaykumargowdar:h7GKkbvWVPZ2vwr9@myapplication-shard-
 //	console.log(response);
 //});
 
-var myCursor = db.collection('MyCollection').find({"brand" : "iphone"},{"models" : 1}) ;
+var myCursor = db.collection('MyCollection').find({"brand" : "iphone"},{"model" : 1}) ;
 while (myCursor.hasNext()) {
 console.log(JSON.parse(myCursor.next()));
 }
