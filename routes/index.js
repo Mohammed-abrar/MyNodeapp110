@@ -72,7 +72,8 @@ router.post('/consecutivecalls', function(req, res) {
   										else
 										{
 										  context = response.context;
-										  console.log(response.output);
+										  var caseidentifier = response.output.entities.entity ;
+										  console.log(caseidentifier);
     										  res.send(response.output);
 										}
 									     });
