@@ -60,9 +60,7 @@ router.get('/firstcall', function(req, res, next) {
   										else
 										{
 										  context = response.context;
-    										  res.send(response.output);
-										  console.log(response.entities[0].entity);
-										  
+    										  res.send(response.output);										  
 										}
 									     });
 
@@ -81,8 +79,7 @@ router.post('/consecutivecalls', function(req, res) {
   										else
 										{
 										  context = response.context;
-										  //console.log(response.entities[0].entity);
-										  //console.log(response.entities[0].value);
+										  console.log(response.entities[0].entity);
     										  res.send(response.output);
 										}
 									     });
