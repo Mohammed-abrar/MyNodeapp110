@@ -33,6 +33,12 @@ var conversation = watson.conversation({
 
 var context = {};
 var response;
+var product = '';
+var brand = '';
+var model = '';
+var color = '';
+var memory = '';
+var price;
 
 router.get('/firstcall', function(req, res, next) {
 	
@@ -56,8 +62,7 @@ router.get('/firstcall', function(req, res, next) {
 
 
 router.post('/consecutivecalls', function(req, res) {
-					console.log(req.body.context);
-  					conversation.message({
+					conversation.message({
   					workspace_id: 'f9fa4f80-fef3-49eb-b5cb-ca1b40d77e52',
   				 	input: {'text': req.body.question },
   						context: context
@@ -67,6 +72,7 @@ router.post('/consecutivecalls', function(req, res) {
   										else
 										{
 										  context = response.context;
+										  console.log(context);
     										  res.send(response.output);
 										}
 									     });
