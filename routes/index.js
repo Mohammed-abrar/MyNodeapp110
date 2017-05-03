@@ -18,9 +18,10 @@ var db = monk('mongodb://akshaykumargowdar:h7GKkbvWVPZ2vwr9@myapplication-shard-
 //	console.log(response);
 //});
 
-db.collection('MyCollection').find({"brand" : "iphone"},{"models" : 1}).then(function(response){
- 	console.log(response);
- 	});
+var myCursor = db.collection('MyCollection').find({"brand" : "iphone"},{"models" : 1}) ;
+while (myCursor.hasNext()) {
+console.log(JSON.parse(myCursor.next()));
+}
 
 var TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
 var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
