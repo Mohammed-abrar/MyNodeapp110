@@ -150,10 +150,7 @@ router.get('/speechtotext', function(req, res, next) {
 
 router.get('/getdata', function(req, res, next) {
 	db.collection('MyCollection').find({"brand" : "iphone"},{"model" : 1}).then(function(response){
-		while (!(response.hasNext())){
-		console.log(JSON.parse(respone.hasNext));
 		res.send(response);
-		}
  	
  	});
 });
