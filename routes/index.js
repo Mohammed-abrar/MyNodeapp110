@@ -162,7 +162,7 @@ router.get('/getdata', function(req, res, next) {
 });*/
 
 router.get('/getdata', function(req, res, next) {
-	db.collection('MyCollection').distinct("model",{ "brand" : "iphone").then(function(response){
+	db.collection('MyCollection').distinct("model",{ "brand" : "iphone"}).then(function(response){
 		
 	res.send(response);
  	
