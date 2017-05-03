@@ -79,9 +79,9 @@ router.post('/consecutivecalls', function(req, res) {
   										else
 										{
 										  context = response.context;
-										  
+										  console.log(response);
     										  res.send(response.output);
-											console.log(response.entities[0].entity);
+											
 										}
 									     });
 
