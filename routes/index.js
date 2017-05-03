@@ -80,7 +80,7 @@ router.post('/consecutivecalls', function(req, res) {
   										else
 										{
 										  context = response.context;
-										  console.log(response.entities[0]);
+										  console.log(response.entities[0].value);
     										  res.send(response.output);
 										}
 									     });
