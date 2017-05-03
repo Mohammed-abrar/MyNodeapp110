@@ -18,10 +18,12 @@ var db = monk('mongodb://akshaykumargowdar:h7GKkbvWVPZ2vwr9@myapplication-shard-
 //	console.log(response);
 //});
 
-var myCursor = db.collection('MyCollection').find({"brand" : "iphone"},{"model" : 1}) ;
-while (myCursor.hasNext()){
-console.log(JSON.parse(myCursor.next()));
+db.collection('MyCollection').find({"brand" : "iphone"},{"model" : 1}).then(function(response) {
+	
+while (!(response.hasNext())){
+console.log(JSON.parse(respone.hasNext));
 }
+});
 
 
 var TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
