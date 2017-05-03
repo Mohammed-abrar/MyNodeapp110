@@ -80,7 +80,7 @@ router.post('/consecutivecalls', function(req, res) {
   										else
 										{
 										  context = response.context;
-										  console.log(response.entities[0].value);
+										  //console.log(response.entities[0].value);
     										  res.send(response.output);
 										}
 									     });
@@ -150,7 +150,13 @@ router.get('/speechtotext', function(req, res, next) {
 
 router.get('/getdata', function(req, res, next) {
 	db.collection('MyCollection').find({"brand" : "iphone"},{"_id" : 0, "model" : 1, "brand" : 0}).then(function(response){
-		res.send(response[0].model);
+		
+		var data = "":
+		for(var i=0; i< response.length; i++)
+		{
+			data = data + response[i].model + ',';
+		}
+		res.send(data);
  	
  	});
 });
