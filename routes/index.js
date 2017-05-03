@@ -139,11 +139,11 @@ router.get('/speechtotext', function(req, res, next) {
 });*/
 
 
-router.get('/getdata', function(req, res, next) {
+/*router.get('/getdata', function(req, res, next) {
 	db.MyCollection.find({"product"}).pretty().then(function(response){
  	res.send(response);
  	});
-});
+});*/
 
 
 /* GET home page. */
