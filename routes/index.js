@@ -147,9 +147,9 @@ router.get('/speechtotext', function(req, res, next) {
 	
 });*/
 
-
+/*
 router.get('/getdata', function(req, res, next) {
-	db.collection('MyCollection').find({"brand" : "iphone"},{"_id" : 0, "model" : 1, "brand" : 0}).distinct().then(function(response){
+	db.collection('MyCollection').find({"brand" : "iphone"},{"_id" : 0, "model" : 1, "brand" : 0}).then(function(response){
 		
 		var data = " ";
 		for(var i=0; i< response.length; i++)
@@ -157,6 +157,14 @@ router.get('/getdata', function(req, res, next) {
 			data = data + response[i].model + ',';
 		}
 		res.send(data);
+ 	
+ 	});
+});*/
+
+router.get('/getdata', function(req, res, next) {
+	db.collection('MyCollection').distinct("model",{ "brand" : "iphone").then(function(response){
+		
+	res.send(response);
  	
  	});
 });
