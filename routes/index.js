@@ -72,8 +72,6 @@ router.post('/consecutivecalls', function(req, res) {
   										else
 										{
 										  context = response.context;
-										  var caseidentifier = response.entities[0].entity ;
-										  console.log(caseidentifier);
     										  res.send(response.output);
 										}
 									     });
@@ -142,7 +140,7 @@ router.get('/speechtotext', function(req, res, next) {
 
 
 router.get('/getdata', function(req, res, next) {
-	db.MyCollection.find({"by":"product"}).pretty().then(function(response){
+	db.collection('MyCollection').find({"by":"product"}).pretty().then(function(response){
  	res.send(response);
  	});
 });
