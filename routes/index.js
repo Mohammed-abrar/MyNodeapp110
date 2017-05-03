@@ -207,7 +207,7 @@ router.get('/storedata', function(req, res, next) {
 
 
 router.get('/getdata', function(req, res, next) {
-	db.collection('MyCollection').find().then(function(response){
+	db.MyCollection.find({$and:[{"by":"product"}]}).pretty().then(function(response){
  	res.send(response);
  	});
 });
