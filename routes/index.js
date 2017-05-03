@@ -18,13 +18,13 @@ var db = monk('mongodb://akshaykumargowdar:h7GKkbvWVPZ2vwr9@myapplication-shard-
 //	console.log(response);
 //});
 
-db.collection('MyCollection').find({"brand" : "iphone"},{"model" : 1}).then(function(response) {
+/*db.collection('MyCollection').find({"brand" : "iphone"},{"model" : 1}).then(function(response) {
 	
 while (!(response.hasNext())){
 console.log(JSON.parse(respone.hasNext));
 }
 });
-
+*/
 
 var TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
 var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
@@ -149,8 +149,12 @@ router.get('/speechtotext', function(req, res, next) {
 
 
 router.get('/getdata', function(req, res, next) {
-	db.collection('MyCollection').find().then(function(response){
- 	res.send(response);
+	db.collection('MyCollection').find({"brand" : "iphone"},{"model" : 1}).then(function(response){
+		while (!(response.hasNext())){
+		console.log(JSON.parse(respone.hasNext));
+		res.send(response);
+		}
+ 	
  	});
 });
 
