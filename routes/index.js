@@ -163,8 +163,13 @@ router.get('/getdata', function(req, res, next) {
 
 router.get('/getdata', function(req, res, next) {
 	db.collection('MyCollection').distinct("model",{ "brand" : "iphone"}).then(function(response){
+	var data = " ";
+	for(var i=0 ; i<response.length; i++)
+	{
+		data = data + response[i] + ',' ;
 		
-	res.send(response);
+	}
+	res.send(data);
  	
  	});
 });
