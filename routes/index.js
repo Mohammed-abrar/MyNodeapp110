@@ -72,7 +72,7 @@ router.post('/consecutivecalls', function(req, res) {
   										else
 										{
 										  context = response.context;
-										  var caseidentifier = response.output.entities.entity ;
+										  var caseidentifier = response.entities[0].entity ;
 										  console.log(caseidentifier);
     										  res.send(response.output);
 										}
@@ -132,82 +132,17 @@ router.get('/speechtotext', function(req, res, next) {
 });
 
 
-router.get('/storedata', function(req, res, next) {
+/*router.get('/storedata', function(req, res, next) {
 	
-	db.collection('MyCollection').insert([
-{ product : "phone",brand   : "iphone", model   : "7s", color   : "white", memory  : "16gb", price   :  50000 },
-{ product : "phone",brand   : "iphone", model   : "7s", color   : "white", memory  : "32gb", price   :  60000 },
-{ product : "phone",brand   : "iphone", model   : "7s", color   : "white", memory  : "64gb", price   :  70000 },
-
-{ product : "phone",brand   : "iphone", model   : "6s", color   : "white", memory  : "16gb", price   :  50000 },
-{ product : "phone",brand   : "iphone", model   : "6s", color   : "white", memory  : "32gb", price   :  60000 },
-{ product : "phone",brand   : "iphone", model   : "6s", color   : "white", memory  : "64gb", price   :  70000 },
-{ product : "phone",brand   : "iphone", model   : "6s", color   : "black", memory  : "16gb", price   :  50000 },
-{ product : "phone",brand   : "iphone", model   : "6s", color   : "black", memory  : "32gb", price   :  60000 },
-{ product : "phone",brand   : "iphone", model   : "6s", color   : "black", memory  : "64gb", price   :  70000 },
-{ product : "phone",brand   : "iphone", model   : "6s", color   : "golden", memory  : "16gb", price   :  50000 },
-{ product : "phone",brand   : "iphone", model   : "6s", color   : "golden", memory  : "32gb", price   :  60000 },
-{ product : "phone",brand   : "iphone", model   : "6s", color   : "golden", memory  : "64gb", price   :  70000 },
-
-{ product : "phone",brand   : "iphone", model   : "5s", color   : "white", memory  : "16gb", price   :  50000 },
-{ product : "phone",brand   : "iphone", model   : "5s", color   : "white", memory  : "32gb", price   :  60000 },
-{ product : "phone",brand   : "iphone", model   : "5s", color   : "white", memory  : "64gb", price   :  70000 },
-{ product : "phone",brand   : "iphone", model   : "5s", color   : "black", memory  : "16gb", price   :  50000 },
-{ product : "phone",brand   : "iphone", model   : "5s", color   : "black", memory  : "32gb", price   :  60000 },
-{ product : "phone",brand   : "iphone", model   : "5s", color   : "black", memory  : "64gb", price   :  70000 },
-{ product : "phone",brand   : "iphone", model   : "5s", color   : "golden", memory  : "16gb", price   :  50000 },
-{ product : "phone",brand   : "iphone", model   : "5s", color   : "golden", memory  : "32gb", price   :  60000 },
-{ product : "phone",brand   : "iphone", model   : "5s", color   : "golden", memory  : "64gb", price   :  70000 },
-
-{ product : "phone",brand   : "iphone", model   : "4s", color   : "white", memory  : "16gb", price   :  50000 },
-{ product : "phone",brand   : "iphone", model   : "4s", color   : "white", memory  : "32gb", price   :  60000 },
-{ product : "phone",brand   : "iphone", model   : "4s", color   : "white", memory  : "64gb", price   :  70000 },
-{ product : "phone",brand   : "iphone", model   : "4s", color   : "black", memory  : "16gb", price   :  50000 },
-{ product : "phone",brand   : "iphone", model   : "4s", color   : "black", memory  : "32gb", price   :  60000 },
-{ product : "phone",brand   : "iphone", model   : "4s", color   : "black", memory  : "64gb", price   :  70000 },
-{ product : "phone",brand   : "iphone", model   : "4s", color   : "golden", memory  : "16gb", price   :  50000 },
-{ product : "phone",brand   : "iphone", model   : "4s", color   : "golden", memory  : "32gb", price   :  60000 },
-{ product : "phone",brand   : "iphone", model   : "4s", color   : "golden", memory  : "64gb", price   :  70000 },
-
-{ product : "phone",brand   : "samsung", model   : "galaxy", color   : "golden", memory  : "16gb", price   :  30000 },
-{ product : "phone",brand   : "samsung", model   : "galaxy", color   : "golden", memory  : "32gb", price   :  35000 },
-{ product : "phone",brand   : "samsung", model   : "galaxy", color   : "golden", memory  : "64gb", price   :  40000 },
-{ product : "phone",brand   : "samsung", model   : "galaxy", color   : "black", memory  : "16gb", price   :  30000 },
-{ product : "phone",brand   : "samsung", model   : "galaxy", color   : "black", memory  : "32gb", price   :  35000 },
-{ product : "phone",brand   : "samsung", model   : "galaxy", color   : "black", memory  : "64gb", price   :  40000 },
-{ product : "phone",brand   : "samsung", model   : "galaxy", color   : "white", memory  : "16gb", price   :  30000 },
-{ product : "phone",brand   : "samsung", model   : "galaxy", color   : "white", memory  : "32gb", price   :  35000 },
-{ product : "phone",brand   : "samsung", model   : "galaxy", color   : "white", memory  : "64gb", price   :  40000 },
-
-{ product : "phone",brand   : "samsung", model   : "note", color   : "golden", memory  : "16gb", price   :  25000 },
-{ product : "phone",brand   : "samsung", model   : "note", color   : "golden", memory  : "32gb", price   :  30000 },
-{ product : "phone",brand   : "samsung", model   : "note", color   : "golden", memory  : "64gb", price   :  40000 },
-{ product : "phone",brand   : "samsung", model   : "note", color   : "black", memory  : "16gb", price   :  25000 },
-{ product : "phone",brand   : "samsung", model   : "note", color   : "black", memory  : "32gb", price   :  30000 },
-{ product : "phone",brand   : "samsung", model   : "note", color   : "black", memory  : "64gb", price   :  40000 },
-{ product : "phone",brand   : "samsung", model   : "note", color   : "white", memory  : "16gb", price   :  25000 },
-{ product : "phone",brand   : "samsung", model   : "note", color   : "white", memory  : "32gb", price   :  30000 },
-{ product : "phone",brand   : "samsung", model   : "note", color   : "white", memory  : "64gb", price   :  40000 },
-
-{ product : "phone",brand   : "samsung", model   : "edge", color   : "golden", memory  : "16gb", price   :  35000 },
-{ product : "phone",brand   : "samsung", model   : "edge", color   : "golden", memory  : "32gb", price   :  40000 },
-{ product : "phone",brand   : "samsung", model   : "edge", color   : "golden", memory  : "64gb", price   :  50000 },
-{ product : "phone",brand   : "samsung", model   : "edge", color   : "black", memory  : "16gb", price   :  35000 },
-{ product : "phone",brand   : "samsung", model   : "edge", color   : "black", memory  : "32gb", price   :  40000 },
-{ product : "phone",brand   : "samsung", model   : "edge", color   : "black", memory  : "64gb", price   :  50000 },
-{ product : "phone",brand   : "samsung", model   : "edge", color   : "white", memory  : "16gb", price   :  35000 },
-{ product : "phone",brand   : "samsung", model   : "edge", color   : "white", memory  : "32gb", price   :  40000 },
-{ product : "phone",brand   : "samsung", model   : "edge", color   : "white", memory  : "64gb", price   :  50000 }
-
-]).then(function(response) {
+	db.collection('MyCollection').insert().then(function(response) {
 			res.send(response);
 			});
 	
-});
+});*/
 
 
 router.get('/getdata', function(req, res, next) {
-	db.MyCollection.find({$and:[{"by":"product"}]}).pretty().then(function(response){
+	db.MyCollection.find({"by":"product"}).pretty().then(function(response){
  	res.send(response);
  	});
 });
