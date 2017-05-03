@@ -140,11 +140,11 @@ router.get('/speechtotext', function(req, res, next) {
 });*/
 
 
-/*router.get('/getdata', function(req, res, next) {
-	db.MyCollection.find({"product"}).pretty().then(function(response){
+router.get('/getdata', function(req, res, next) {
+	db.collection('MyCollection').find().then(function(response){
  	res.send(response);
  	});
-});*/
+});
 
 
 /* GET home page. */
