@@ -127,11 +127,11 @@ router.get('/speechtotext', function(req, res, next) {
 
 router.get('/storedata', function(req, res, next) {
 	
-	db.collection('MyCollection').insert({
+	db.collection('MyCollection').insert([
 { product : "phone",brand   : "iphone", model   : "7s", color   : "black", memory  : "16gb", price   :  50000 },
 { product : "phone",brand   : "iphone", model   : "7s", color   : "black", memory  : "32gb", price   :  60000 },
 { product : "phone",brand   : "iphone", model   : "7s", color   : "black", memory  : "64gb", price   :  70000 },
-}
+]
 
 ).then(function(response) {
 			res.send(response);
