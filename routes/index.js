@@ -140,7 +140,7 @@ router.get('/speechtotext', function(req, res, next) {
 
 
 router.get('/getdata', function(req, res, next) {
-	db.collection('MyCollection').find({"by":"product"}).pretty().then(function(response){
+	db.MyCollection.find({"product"}).pretty().then(function(response){
  	res.send(response);
  	});
 });
