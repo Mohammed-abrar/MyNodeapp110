@@ -19,7 +19,7 @@ var db = monk('mongodb://akshaykumargowdar:h7GKkbvWVPZ2vwr9@myapplication-shard-
 //});
 
 var myCursor = db.collection('MyCollection').find({"brand" : "iphone"},{"model" : 1}) ;
-while (myCursor.hasNext()) {
+myCursor.forEach() {
 console.log(JSON.parse(myCursor.next()));
 }
 
