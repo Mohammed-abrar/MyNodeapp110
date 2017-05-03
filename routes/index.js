@@ -149,9 +149,9 @@ router.get('/speechtotext', function(req, res, next) {
 
 
 router.get('/getdata', function(req, res, next) {
-	db.collection('MyCollection').find({"brand" : "iphone"},{"_id" : 0, "model" : 1, "brand" : 0}).then(function(response){
+	db.collection('MyCollection').find({"brand" : "iphone"},{"_id" : 0, "model" : 1, "brand" : 0}).distinct().then(function(response){
 		
-		var data ;
+		var data = " ";
 		for(var i=0; i< response.length; i++)
 		{
 			data = data + response[i].model + ',';
