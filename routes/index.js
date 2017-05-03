@@ -52,7 +52,7 @@ router.get('/firstcall', function(req, res, next) {
 	
   					conversation.message({
   					workspace_id: 'f9fa4f80-fef3-49eb-b5cb-ca1b40d77e52',
-  				 	input: {'text': " " },
+  				 	input: {'text': "search " },
   						
 						},  function(err, response) {
   										if (err)
@@ -60,7 +60,7 @@ router.get('/firstcall', function(req, res, next) {
   										else
 										{
 										  context = response.context;
-    										  res.send(response.output);
+    										  res.send(response.entities[0].entity);
 										  
 										}
 									     });
