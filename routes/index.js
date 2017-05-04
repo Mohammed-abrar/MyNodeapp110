@@ -84,60 +84,6 @@ router.post('/consecutivecalls', function(req, res) {
 										  console.log(response);
     										  res.send(response.output);
 										  i = i + 1;
-											
-											if(i>=1)
-											{
-	var entity = response.entities[0].entity;
-	var entity_value = response.entities[0].value;
-	
-	switch(entity)
-	{
-	case phone : if(entity_value == "phone")
-				 {
-				  product = "phone" ;
-				  db.collection('MyCollection').distinct("brand").then(function(response){
-				  var data = " ";
-				  for(var i=0 ; i<response.length; i++)
-				  {
-				  data = data + response[i] + " " + ',' ;
-				  }
-				  response.output = response.output + data ;
-				  });
-				 }
-				 
-				 else if(entity_value == "iphone")
-				 {
-				  brand = "iphone" ;
-				  db.collection('MyCollection').distinct("model",{"brand" : "iphone"}).then(function(response){
-				  var data = " ";
-				  for(var i=0 ; i<response.length; i++)
-				  {
-				  data = data + response[i] + " " + ',' ;
-				  }
-				  response.output = response.output + data ;
-				  });
-				  }
-				  
-				  else if(entity_value == "samsung")
-				 {
-				  brand = "iphone" ;
-				  db.collection('MyCollection').distinct("model",{"brand" : "samsung"}).then(function(response){
-				  var data = " ";
-				  for(var i=0 ; i<response.length; i++)
-				  {
-				  data = data + response[i] + " " + ',' ;
-				  }
-				  response.output = response.output + data ;
-				  });
-				  }
-				  break ;
-				  
-	}
-	
-}
-											
-										   
-											
 										}
 									     });
 
