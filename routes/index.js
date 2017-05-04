@@ -40,6 +40,7 @@ var conversation = watson.conversation({
 
 
 var context = {};
+var i = 0;
 var response;
 var product = '';
 var brand = '';
@@ -59,6 +60,7 @@ router.get('/firstcall', function(req, res, next) {
     										console.log('error:', err);
   										else
 										{
+										  i = 0 ;
 										  context = response.context;
     										  res.send(response.output);										  
 										}
@@ -81,6 +83,60 @@ router.post('/consecutivecalls', function(req, res) {
 										  context = response.context;
 										  console.log(response);
     										  res.send(response.output);
+										  i = i + 1;
+											
+											if(i>=1)
+											{
+	var entity = response.entities[0].entity;
+	var entity_value = response.entities[0].value;
+	
+	switch(entity)
+	{
+	case phone : if(entity_value == "phone")
+				 {
+				  product = "phone" ;
+				  db.collection('MyCollection').distinct("brand").then(function(response){
+				  var data = " ";
+				  for(var i=0 ; i<response.length; i++)
+				  {
+				  data = data + response[i] + " " + ',' ;
+				  }
+				  response.output = response.output + data ;
+				  });
+				 }
+				 
+				 else if(entity_value == "iphone")
+				 {
+				  brand = "iphone" ;
+				  db.collection('MyCollection').distinct("model",{"brand" : "iphone"}).then(function(response){
+				  var data = " ";
+				  for(var i=0 ; i<response.length; i++)
+				  {
+				  data = data + response[i] + " " + ',' ;
+				  }
+				  response.output = response.output + data ;
+				  });
+				  }
+				  
+				  else if(entity_value == "samsung")
+				 {
+				  brand = "iphone" ;
+				  db.collection('MyCollection').distinct("model",{"brand" : "samsung"}).then(function(response){
+				  var data = " ";
+				  for(var i=0 ; i<response.length; i++)
+				  {
+				  data = data + response[i] + " " + ',' ;
+				  }
+				  response.output = response.output + data ;
+				  });
+				  }
+				  break ;
+				  
+	}
+	
+}
+											
+										   
 											
 										}
 									     });
