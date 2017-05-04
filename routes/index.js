@@ -62,7 +62,8 @@ router.get('/firstcall', function(req, res, next) {
 										{
 										  i = 0 ;
 										  context = response.context;
-    										  res.send(response.output);										  
+										  response.output.text = response.output.text + " ";
+    									  res.send(response.output);										  
 										}
 									     });
 
@@ -81,9 +82,111 @@ router.post('/consecutivecalls', function(req, res) {
   										else
 										{
 										  context = response.context;
-										  console.log(response);
-    										  res.send(response.output);
-										  i = i + 1;
+    									  
+										  if(response.entities.length !=0)
+										  {
+											  var entity = response.entities[0].entity;
+											  var entity_value = response.entities[0].value;
+											  console.log(entity);
+											  switch(entity)
+											  {
+												  case 'phone' : if(entity_value == "phone")
+																{
+																	var data = " ";
+																	product = "phone" ;
+																	db.collection('MyCollection').distinct("brand").then(function(qures){
+																	for(var i=0 ; i<qures.length; i++)
+																	{
+																	data = data + qures[i] + " "  ;
+																	}
+																	console.log(data);
+																	response.output.text = response.output.text + data ;
+																    res.send(response.output);
+																  });
+																
+																
+																}
+																else if(entity_value == "iphone")
+																{
+																	var data = " ";
+																	product = "phone" ;
+																	brand = "iphone"
+																	db.collection('MyCollection').distinct("model",{"product" : product, "brand" : brand}).then(function(qures){
+																	for(var i=0 ; i<qures.length; i++)
+																	{
+																	data = data + qures[i] + " "  ;
+																	}
+																	console.log(data);
+																	response.output.text = response.output.text + data ;
+																    res.send(response.output);
+																  });
+																
+																
+																}
+																else if(entity_value == "samsung")
+																{
+																	var data = " ";
+																	product = "phone" ;
+																	brand = "samsung"
+																	db.collection('MyCollection').distinct("model",{"product" : product, "brand" : brand}).then(function(qures){
+																	for(var i=0 ; i<qures.length; i++)
+																	{
+																	data = data + qures[i] + " "  ;
+																	}
+																	console.log(data);
+																	response.output.text = response.output.text + data ;
+																    res.send(response.output);
+																  });
+																
+																
+																}
+																 break;
+																 
+												case 'model' :  var data = " ";
+												                model = entity_value ;
+															    db.collection('MyCollection').distinct("color",{"product" : product, "brand" : brand, "model" : model}).then(function(qures){
+																for(var i=0 ; i<qures.length; i++)
+																{
+																data = data + qures[i] + " "  ;
+																}
+																console.log(data);
+																response.output.text = response.output.text + data ;
+															    res.send(response.output);
+							                                    });
+																break;
+																
+												case 'color' :  var data = " ";
+												                color = entity_value ;
+															    db.collection('MyCollection').distinct("memory",{"product" : product, "brand" : brand, "model" : model,"color" : color}).then(function(qures){
+																for(var i=0 ; i<qures.length; i++)
+																{
+																data = data + qures[i] + " "  ;
+																}
+																console.log(data);
+																response.output.text = response.output.text + data ;
+															    res.send(response.output);
+							                                    });
+																break;
+																
+												case 'memory' :  var data = " ";
+												                memory = entity_value ;
+															    res.send(response.output);
+																break;
+																
+																
+																
+											  }
+											  
+										  }
+										  else if(response.intents[0].intent == "Add") {
+										  response.output.text = response.output.text +" "+ brand + " "+ model + " "+ color + " "+ memory;
+										  res.send(response.output);  
+										  }
+										  else {
+										  response.output.text = response.output.text + " " ;
+										  res.send(response.output);
+										  }
+										  
 										}
 									     });
 
@@ -174,7 +277,7 @@ router.get('/getdata', function(req, res, next) {
 	res.send(data);
  	
  	});
-});
+}); 
 
 
 /* GET home page. */
