@@ -20,7 +20,7 @@ res.send("welcome");
 
 router.get('/getenv' , function(req,res,next){ 
 discovery.getEnvironments((), function(error, data) {
-  console.log(JSON.stringify(data, null, 2));
+  res.send(JSON.stringify(data, null, 2));
 });
 });
 
