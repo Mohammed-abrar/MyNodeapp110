@@ -6,7 +6,28 @@ var router = express.Router();
 var mongo = require('mongodb');
 var monk = require('monk');
 
-var DiscoveryV1 = require('watson-developer-cloud/discovery/v1');var discovery = new DiscoveryV1({  username: 'f4ea90fa-4da5-42b0-ac90-2204c432b28a',  password: 'bmvhi2K2Rf1A',  version: 'v1',  version_date: '2016-12-01'});router.get('/envcreate', function(req, res, next) {        discovery.createEnvironment({                                              name: 'my_environment',                                              description: 'My environment',                                              size: 0                                                },                                                    function (err, response) {                                                                            if (err)                                                                            console.log('error in creating new env:', err);                                                                            else                                                                            {                                                                              console.log(JSON.stringify(response, null, 2));                                                                              res.send(response);                                                                            }                                                                            });});
+var DiscoveryV1 = require('watson-developer-cloud/discovery/v1');
+var discovery = new DiscoveryV1({
+	username: 'f4ea90fa-4da5-42b0-ac90-2204c432b28a',
+	password: 'bmvhi2K2Rf1A',
+	version: 'v1',
+	version_date: '2016-12-01'
+       });
+
+router.get('/envcreate', function(req, res, next) { discovery.createEnvironment({
+	name: 'my_environment',
+	description: 'My environment',
+	size: 0
+        },function (err, response) {
+	if (err)
+        console.log('error in creating new env:', err);
+	else
+	{
+	console.log(JSON.stringify(response, null, 2));
+	res.send(response);
+	}
+});
+});
 
 var db = monk('mongodb://akshaykumargowdar:h7GKkbvWVPZ2vwr9@myapplication-shard-00-00-rplbd.mongodb.net:27017,myapplication-shard-00-01-rplbd.mongodb.net:27017,myapplication-shard-00-02-rplbd.mongodb.net:27017/MyApplication?ssl=true&replicaSet=MyApplication-shard-0&authSource=admin');
 //var db = monk('localhost:27017/MyApplicationDatabase');
