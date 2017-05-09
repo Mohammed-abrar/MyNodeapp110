@@ -28,7 +28,7 @@ router.get('/envcreate', function(req,res,next){
 	discovery.createEnvironment({
 		name: 'my_environment',
 		description: 'My environment',
-		size: 0
+		size: 10
 	         }, function (err, response) {
 						if (err)
 						res.send(err);
