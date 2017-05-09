@@ -28,12 +28,12 @@ router.get('/envcreate', function(req,res,next){
 	discovery.createEnvironment({
 		name: 'my_environment',
 		description: 'My environment',
-		size: 10
+		size: 0000
 	         }, function (err, response) {
 						if (err)
 						res.send(err);
 		                                else
-				                res.send(JSON.stringify(response, null, 2));
+				                res.send(response);
 	           });
 });
 	
