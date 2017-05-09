@@ -498,8 +498,8 @@ input[type=text]:focus {
 		</div>
 		
 		<div class="popup-messages-footer">
-			<input type="text" ng-model="input.question" / > 
-			<button class="button" ng-click="send1()" > Send </button> 
+			<input type="text" ng-keypress="($event.which === 13)?send1():0" ng-model="input.question" / > 
+			<button class="button" ng-click="send1()"  > Send </button> 
 			</div>
 		
 			
