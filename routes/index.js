@@ -24,6 +24,12 @@ discovery.getEnvironments((), function(error, data) {
 });
 });*/
 
+router.get('/listenv', function(req,res,next) { 
+discovery.getEnvironments({}, function(error, data) {
+res.send(JSON.stringify(data, null, 2));
+});
+});
+
 router.get('/envcreate', function(req,res,next){
 	discovery.createEnvironment({
 		name: 'my_environment',
