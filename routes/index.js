@@ -18,7 +18,13 @@ router.get('/wish', function(req, res, next){
 res.send("welcome");
 });
 
-app.get('/envcreate', function(req,res,next){
+router.get('/getenv' , function(req,res,next){ 
+discovery.getEnvironments((), function(error, data) {
+  console.log(JSON.stringify(data, null, 2));
+});
+});
+
+router.get('/envcreate', function(req,res,next){
 	discovery.createEnvironment({
 		name: 'my_environment',
 		description: 'My environment',
