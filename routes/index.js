@@ -24,11 +24,12 @@ discovery.getEnvironments((), function(error, data) {
 });
 });*/
 
+var size = 0;
 router.get('/envcreate', function(req,res,next){
 	discovery.createEnvironment({
 		name: 'my_environment',
 		description: 'My environment',
-		size: 0000
+		size: size
 	         }, function (err, response) {
 						if (err)
 						res.send(err);
