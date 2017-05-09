@@ -18,13 +18,19 @@ router.get('/wish', function(req, res, next){
 res.send("welcome");
 });
 
-router.get('/getenv', function(req,res,next){ 
-discovery.getEnvironments(my_environment, function(error, data) {
-  console.log(JSON.stringify(data, null, 2));
-	res.send(data);
+app.get('/envcreate', function(req,res,next){
+	discovery.createEnvironment({
+		name: 'my_environment',
+		description: 'My environment',
+		size: 0
+	         }, function (err, response) {
+						if (err)
+						res.send(err);
+		                                else
+				                res.send(JSON.stringify(response, null, 2));
+	           });
 });
-});
-
+	
 var db = monk('mongodb://akshaykumargowdar:h7GKkbvWVPZ2vwr9@myapplication-shard-00-00-rplbd.mongodb.net:27017,myapplication-shard-00-01-rplbd.mongodb.net:27017,myapplication-shard-00-02-rplbd.mongodb.net:27017/MyApplication?ssl=true&replicaSet=MyApplication-shard-0&authSource=admin');
 //var db = monk('localhost:27017/MyApplicationDatabase');
 
