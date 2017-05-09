@@ -18,11 +18,11 @@ router.get('/wish', function(req, res, next){
 res.send("welcome");
 });
 
-router.get('/getenv' , function(req,res,next){ 
+/*router.get('/getenv' , function(req,res,next){ 
 discovery.getEnvironments((), function(error, data) {
   res.send(JSON.stringify(data, null, 2));
 });
-});
+});*/
 
 router.get('/envcreate', function(req,res,next){
 	discovery.createEnvironment({
