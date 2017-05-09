@@ -14,6 +14,10 @@ var discovery = new DiscoveryV1({
 	version_date: '2016-12-01'
        });
 
+router.get('/wish', function(req,res, next) {
+res.send("hello");
+});
+
 router.get('/envcreate', function(req, res, next) { discovery.createEnvironment({
 	name: 'my_environment',
 	description: 'My environment',
