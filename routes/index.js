@@ -14,6 +14,17 @@ var discovery = new DiscoveryV1({
 	version_date: '2016-12-01'
        });
 
+router.get('/wish', function(req, res, next){ 
+res.send("welcome");
+});
+
+router.get('/getenv', function(req,res,next){ 
+discovery.getEnvironments(my_environment, function(error, data) {
+  console.log(JSON.stringify(data, null, 2));
+	res.send(data);
+});
+});
+
 var db = monk('mongodb://akshaykumargowdar:h7GKkbvWVPZ2vwr9@myapplication-shard-00-00-rplbd.mongodb.net:27017,myapplication-shard-00-01-rplbd.mongodb.net:27017,myapplication-shard-00-02-rplbd.mongodb.net:27017/MyApplication?ssl=true&replicaSet=MyApplication-shard-0&authSource=admin');
 //var db = monk('localhost:27017/MyApplicationDatabase');
 
