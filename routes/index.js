@@ -6,43 +6,6 @@ var router = express.Router();
 var mongo = require('mongodb');
 var monk = require('monk');
 
-var DiscoveryV1 = require('watson-developer-cloud/discovery/v1');
-var discovery = new DiscoveryV1({
-	username: 'f4ea90fa-4da5-42b0-ac90-2204c432b28a',
-	password: 'bmvhi2K2Rf1A',
-	version: 'v1',
-	version_date: '2016-12-01'
-       });
-
-router.get('/wish', function(req, res, next){ 
-res.send("welcome");
-});
-
-/*router.get('/getenv' , function(req,res,next){ 
-discovery.getEnvironments((), function(error, data) {
-  res.send(JSON.stringify(data, null, 2));
-});
-});*/
-
-router.get('/listenv', function(req,res,next) { 
-discovery.getEnvironments({}, function(error, data) {
-res.send(JSON.stringify(data, null, 2));
-});
-});
-
-router.get('/envcreate', function(req,res,next){
-	discovery.createEnvironment({
-		name: 'my_environment',
-		description: 'My environment',
-		size: '0'
-	         }, function (err, response) {
-						if (err)
-						res.send(err);
-		                                else
-				                res.send(response);
-	           });
-});
-	
 var db = monk('mongodb://akshaykumargowdar:h7GKkbvWVPZ2vwr9@myapplication-shard-00-00-rplbd.mongodb.net:27017,myapplication-shard-00-01-rplbd.mongodb.net:27017,myapplication-shard-00-02-rplbd.mongodb.net:27017/MyApplication?ssl=true&replicaSet=MyApplication-shard-0&authSource=admin');
 //var db = monk('localhost:27017/MyApplicationDatabase');
 
