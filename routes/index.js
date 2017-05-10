@@ -57,10 +57,9 @@ db.collection('counters').insert({
    });
 });
 
-function getNextSequence(name) {   var ret = db.collection('counters').findAndModify({
-	query: { _id: name },
-	update: { $inc: { seq: 1 } },
-	new: true     
+function getNextSequence(name) {   var ret = db.collection('counters').findOneAndUpdate({
+	 { _id: name },
+	 { $inc: { seq: 1 } },   
 	});  
 return ret.seq;
 }
