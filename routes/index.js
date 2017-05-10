@@ -49,6 +49,24 @@ var color = '';
 var memory = '';
 var price;
 
+router.get('/initialize', function(req,res){
+
+db.collection('counters').insert({
+      _id: "userid",
+      seq: 0
+   });
+});
+
+function getNextSequence(name) {   var ret = db.collection('counters').findAndModify({
+	query: { _id: name },
+	update: { $inc: { seq: 1 } },
+	new: true     
+	});  
+return ret.seq;
+}
+
+router.get('/insert',function(req,res){  db.collection('student').insert({ candidate_id: getNextSequence("userid"), name : "xyz" }); res.send("insert done");});
+router.get('/display',function(req,res){ db.collection('student').find().then(function(response){  res.send(response); });});
 router.get('/firstcall', function(req, res, next) {
 	
   					conversation.message({
