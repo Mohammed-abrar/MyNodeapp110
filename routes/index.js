@@ -5,6 +5,31 @@ var fs = require('file-system');
 var router = express.Router();
 var mongo = require('mongodb');
 var monk = require('monk');
+var twitter = require('twitter');
+
+var twit = new twitter({
+    consumer_key: 'iFcVBNTnjNERLLBQXTf7aHVGz',
+   
+ 	consumer_secret: 'RceJq93nX2qxsFZhyDYF3xf7d3ECAiXiSTjyHIcrDkaT6jnO1F',
+   
+ 	access_token_key: '393412092-ZERaKUtJBPFAKLcau7HaOvPwP612cXhMGD5VDZfM',
+
+   	access_token_secret: 'coRMWFVJXue89NbV0MPmpGtm3cY5dT9prX2jDkPVeqiea'
+
+});
+
+router.post('/accessTweets', function (req, res){
+	var tweets = [];
+	var tweetsObject = [];
+	twit.get('search/tweets',{q : "#ipl"},function(error, response){
+		tweets.push(response);
+		for(var item of tweets[0].statuses) {
+			   tweetsObject.push({"text" :item.text });
+		  }
+		res.send(tweetsObject);
+	}); 
+});
+
 
 var db = monk('mongodb://akshaykumargowdar:h7GKkbvWVPZ2vwr9@myapplication-shard-00-00-rplbd.mongodb.net:27017,myapplication-shard-00-01-rplbd.mongodb.net:27017,myapplication-shard-00-02-rplbd.mongodb.net:27017/MyApplication?ssl=true&replicaSet=MyApplication-shard-0&authSource=admin');
 //var db = monk('localhost:27017/MyApplicationDatabase');
