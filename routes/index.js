@@ -61,6 +61,11 @@ router.get('/cmfirstcall', function(req, res, next) {
                                        
 					});
 
+var JSONObj;
+router.get('/getobject',function(req,res,next){
+res.send(JSONObj);
+});
+
 router.post('/cmconsecutivecalls', function(req, res) {
 					console.log("request received");
 					conversation1.message({
@@ -74,7 +79,7 @@ router.post('/cmconsecutivecalls', function(req, res) {
 										{
 										  var data = "";
 										  context1 = response.context;
-										  console.log(response.entities);
+										  JSONObj = response.entities ;
 										  for(var j=0; j < response.output.text.length ; j++)
 										  {
 											  if(response.output.text[j]!="")
