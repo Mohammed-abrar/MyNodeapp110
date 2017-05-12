@@ -53,6 +53,7 @@ router.get('/cmfirstcall', function(req, res, next) {
 										{
 										  i = 0 ;
 										  context1 = response.context;
+										  response.output.text = response.output.text + "";
 										  res.send(response.output);										  
 										}
 									     });
