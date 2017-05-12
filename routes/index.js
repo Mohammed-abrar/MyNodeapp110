@@ -74,7 +74,7 @@ router.get('/cmfirstcall', function(req, res, next) {
 
 var JSONObj;
 router.get('/getobject',function(req,res,next){
-res.send(entity, entityvalue, JSONObject);
+res.send(entity, entityvalue, JSONObj);
 });
 
 router.post('/cmconsecutivecalls', function(req, res) {
