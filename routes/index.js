@@ -75,6 +75,7 @@ router.post('/cmconsecutivecalls', function(req, res) {
 										  context1 = response.context;
 										  for(var j=0; j < response.output.text.length ; j++)
 										  {
+											  if(response.output.text[j]!="")
 											  data = data + response.output.text[j];
 										  }
 										  response.output.text = data;
