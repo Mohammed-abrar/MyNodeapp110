@@ -17,7 +17,8 @@
     "monk": "~4.0.0",
     "morgan": "~1.8.1",
     "serve-favicon": "~2.4.2",
-    "watson-developer-cloud": "^2.25.1"
+    "watson-developer-cloud": "^2.25.1",
+     "twitter": "^1.7.0"
   },
   "repository": {},
   "engines": {
