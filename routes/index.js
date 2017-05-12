@@ -54,7 +54,7 @@ router.get('/cmfirstcall', function(req, res, next) {
 										  i = 0 ;
 										  context1 = response.context;
 										  var data;
-										  for(j=0;j<response.output.text.length; <j++)
+										  for(j=0;j<response.output.text.length; j++)
 										  {
 									          if(response.output.text[j].length !=0)
 									          data = data + response.output.text[j];
