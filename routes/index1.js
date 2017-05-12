@@ -26,4 +26,4 @@ router.get('/texttospeech', function(req, res, next) { var params = {  text: '
 /*router.get('/getdata', function(req, res, next) { db.collection('MyCollection').find({"brand" : "iphone"},{"_id" : 0, "model" : 1, "brand" : 0}).then(function(response){    var data = " ";  for(var i=0; i< response.length; i++)  {   data = data + response[i].model + ',';  }  res.send(data);    });});*/
 router.get('/getdata', function(req, res, next) { db.collection('MyCollection').distinct("model",{ "brand" : "iphone"}).then(function(response){ var data = " "; for(var i=0 ; i<response.length; i++) {  data = data + response[i] + ',' ;   } res.send(data);    });}); 
 /* GET home page. */router.get('/', function(req, res, next) {  res.render('index', { title: 'Express' });});
-router.get('/conversationapp', function(req,res,next) {  res.render('capitalmarket') ;});module.exports = router;
+router.get('/capitalmarket', function(req,res,next) {  res.render('capitalmarket') ;});module.exports = router;
