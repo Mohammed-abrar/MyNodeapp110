@@ -31,6 +31,53 @@ var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
 
 var watson = require('watson-developer-cloud');
 
+var conversation1 = watson.conversation({
+  username: 'caf2c86f-70f8-4e83-8a3b-31409d5dea56',
+  password: 'jd1dFOGQjkTT',
+  version: 'v1',
+  version_date: '2017-04-14'
+});
+
+var context1 = {};
+
+router.get('/cmfirstcall', function(req, res, next) {
+	
+  					conversation1.message({
+  					workspace_id: '43f286ca-2146-428f-af8d-f20e96f57b91',
+  				 	input: {'text': "" },
+  						
+						},  function(err, response) {
+  										if (err)
+    										console.log('error:', err);
+  										else
+										{
+										  i = 0 ;
+										  context1 = response.context;
+										  res.send(response.output);										  
+										}
+									     });
+
+                                       
+					});
+
+router.post('/cmconsecutivecalls', function(req, res) {
+					console.log("request received");
+					conversation1.message({
+  					workspace_id: '43f286ca-2146-428f-af8d-f20e96f57b91',
+  				 	input: {'text': req.body.question },
+  						context: context1
+						},  function(err, response) {
+  										if (err)
+    										console.log('error:', err);
+  										else
+										{
+										  context1 = response.context;
+										  console.log("server hit");
+										  res.send(response.output);
+										}
+						});
+});
+
 var conversation = watson.conversation({
   username: 'e4550c76-2732-4319-99a3-a5ba24353928',
   password: 'LePjWTbZIsCx',
@@ -306,4 +353,9 @@ router.get('/', function(req, res, next) {
 router.get('/conversationapp', function(req,res,next) { 
 	res.render('conversation1') ;
 });
+
+router.get('/capitalmarket', function(req,res,next){
+res.render('conversation');
+});
+
 module.exports = router;
