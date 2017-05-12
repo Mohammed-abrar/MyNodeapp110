@@ -39,6 +39,8 @@ var conversation1 = watson.conversation({
 });
 
 var context1 = {};
+var entity =[];
+var entityvalue = [];
 
 router.get('/cmfirstcall', function(req, res, next) {
 	
@@ -53,16 +55,13 @@ router.get('/cmfirstcall', function(req, res, next) {
 										{
 										  if(response.entities.length !=0 )
 										  {
-											var entity =[];
-											var entityvalue = [];
-
+									
 											for(var k=0; k < response.entities.length; k++)
 											{
 											entity[k] = response.entities[k].entity ;
 											entityvalue[k] = response.entities[k].value ;	
 											}
-											console.log(entity);
-											console.log(entityvalue);	  
+											  
 										   }
 										  context1 = response.context;
 										  response.output.text = response.output.text + "";
@@ -75,7 +74,7 @@ router.get('/cmfirstcall', function(req, res, next) {
 
 var JSONObj;
 router.get('/getobject',function(req,res,next){
-res.send(JSONObj);
+res.send(entity, entityvalue, JSONObject);
 });
 
 router.post('/cmconsecutivecalls', function(req, res) {
