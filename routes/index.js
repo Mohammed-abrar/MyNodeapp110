@@ -51,7 +51,19 @@ router.get('/cmfirstcall', function(req, res, next) {
     										console.log('error:', err);
   										else
 										{
-										  i = 0 ;
+										  if(response.entities.length !=0 )
+										  {
+											var entity =[];
+											var entityvalue = [];
+
+											for(var k=0; k < response.entities.length; k++)
+											{
+											entity[k] = response.entities[k].entity ;
+											entityvalue[k] = response.entities[k].value ;	
+											}
+											console.log(entity);
+											console.log(entityvalue);	  
+										   }
 										  context1 = response.context;
 										  response.output.text = response.output.text + "";
 										  res.send(response.output);										  
