@@ -471,7 +471,7 @@ body, html {
                       <img alt="message user image" src="../images/chatbot.jpg" class="direct-chat-img">
                       <div class="direct-chat-text" ng-repeat = "x in myData">
                         <div ng-if = "x.text">
-						<p> {{ x.text }}</p>
+						<p> {{ x.text[0] }}</p>
 						</div>
 						
 						 <div ng-if = "x.question">
