@@ -72,7 +72,7 @@ router.post('/cmconsecutivecalls', function(req, res) {
   										else
 										{
 										  context1 = response.context;
-										  console.log("server hit");
+										  console.log(response.output);
 										  res.send(response.output);
 										}
 						});
