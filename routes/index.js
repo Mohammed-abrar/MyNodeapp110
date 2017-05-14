@@ -21,12 +21,15 @@ var twit = new twitter({
 router.post('/accessTweets', function (req, res){
 	var tweets = [];
 	var tweetsObject = [];
-	twit.get('search/tweets',{q : "#ipl"},function(error, response){
+	twit.get('search/tweets',{q : req.body.query},function(error, response){
 		tweets.push(response);
+		console.log(response);
 		for(var item of tweets[0].statuses) {
 			   tweetsObject.push({"text" :item.text });
 		  }
+		console.log(tweetsObject);
 		res.send(tweetsObject);
+		
 	}); 
 });
 
@@ -78,18 +81,6 @@ router.get('/cmfirstcall', function(req, res, next) {
     										console.log('error:', err);
   										else
 										{
-										  if(response.entities.length !=0 )
-										  {
-									
-											for(var k=0; k < response.entities.length; k++)
-											{
-											console.log(response.entities[k].entity);
-											console.log(response.entities[k].value);
-											entity[k] = response.entities[k].entity ;
-											entityvalue[k] = response.entities[k].value ;	
-											}
-											  
-										   }
 										  context1 = response.context;
 										  response.output.text = response.output.text + "";
 										  res.send(response.output);										  
@@ -100,9 +91,8 @@ router.get('/cmfirstcall', function(req, res, next) {
 					});
 
 var JSONObj;
-router.get('/getobject',function(req,res,next){
-res.send(entity, entityvalue, JSONObj);
-});
+var entity = [];
+var entityvalue = [];
 
 router.post('/cmconsecutivecalls', function(req, res) {
 					console.log("request received");
@@ -115,16 +105,28 @@ router.post('/cmconsecutivecalls', function(req, res) {
     										console.log('error:', err);
   										else
 										{
+										  
 										  var data = "";
 										  context1 = response.context;
 										  JSONObj = response.entities ;
+										  //console.log(JSONObj);
+										  if(response.entities.length!=0)
+										  {
+											  for(var k=0;k<response.entities.length ; k++)
+											  {
+												  entity[k]=response.entities[k].entity;
+												  entityvalue[k]=response.entities[k].value;
+												  
+											  }
+											  console.log(entity);
+											  console.log(entityvalue);
+										  }
 										  for(var j=0; j < response.output.text.length ; j++)
 										  {
 											  if(response.output.text[j]!="")
 											  data = data + response.output.text[j];
 										  }
 										  response.output.text = data;
-										  console.log(response.output);
 										  res.send(response.output);
 										}
 						});
@@ -398,15 +400,13 @@ router.get('/getdata', function(req, res, next) {
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+
 
 router.get('/conversationapp', function(req,res,next) { 
 	res.render('conversation1') ;
 });
 
-router.get('/capitalmarket', function(req,res,next){
+router.get('/', function(req,res,next){
 res.render('conversation');
 });
 
