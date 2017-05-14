@@ -35,6 +35,22 @@ app.controller('mycontroller', function($scope,$http) {
 			
 	});
 	}
+	
+	$scope.send2 = function(){
+    $scope.tweetdata = [] ;
+	$http.post('/accessTweets',$scope.input).then(function(response){
+		        $scope.input.query = " ";
+			
+			var data = "";
+			for(var i=0 ; i< response.data.length ; i++)
+			{
+		     data = data + JSON.stringify(response.data[i].text) + "/n";
+			}
+			console.log(data);
+			$scope.tweetdata.push(data);
+			
+	});
+	}
 });
 </script>
 
@@ -493,6 +509,13 @@ body, html {
 			</div>
 		
 			
+</div>
+
+<div>
+<input type="text" ng-keypress="($event.which === 13)?send2():0" ng-model="input.query" / > 
+<div >
+<p> {{ tweetdata }} </p>
+</div>
 </div>
 	  
 	  
